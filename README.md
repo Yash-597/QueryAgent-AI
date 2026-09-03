@@ -37,7 +37,7 @@ An autonomous, self-correcting AI agent that securely translates natural languag
 
 ### 2. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git clone https://github.com/Yash-597/QueryAgent-AI.git
 cd sql-agent
 ```
 
