@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent SQL Agent</title>
+    <meta name="description" content="AI-powered natural language SQL query agent with interactive results">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- highlight.js for SQL syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js"></script>
+
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Marked.js for markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Panel 1: Schema Explorer -->
+        <aside class="glass-panel schema-panel">
+            <div class="panel-header">
+                <h2>🔍 Schema Explorer</h2>
+                <span class="schema-count" id="schema-count"></span>
+            </div>
+            <div class="schema-search-wrap">
+                <input type="text" id="schema-search" placeholder="Filter tables..." autocomplete="off">
+            </div>
+            <ul id="schema-list" class="schema-list">
+                <li class="schema-loading">Loading schema...</li>
+            </ul>
+        </aside>
+
+        <!-- Panel 2: Chat Interface -->
+        <main class="glass-panel chat-panel">
+            <div id="chat-history" class="chat-history"></div>
+            <div class="input-area">
+                <input type="text" id="chat-input" placeholder="Ask about your database in plain English..." autocomplete="off">
+                <button id="send-btn" title="Send (Enter)">
+                    <span>Send</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </div>
+        </main>
+
+        <!-- Panel 3: Human Review Inspector -->
+        <aside class="glass-panel inspector-panel" id="inspector-panel" style="display: none;">
+            <h2>🛡️ Human Review</h2>
+            <p class="inspector-desc">The agent drafted this SQL. Review, edit if needed, then approve or reject.</p>
+            <div class="sql-inspector-header">
+                <span class="sql-inspector-label">SQL Query</span>
+                <button id="copy-sql-btn" class="copy-btn-sm">📋 Copy</button>
+            </div>
+            <textarea id="sql-editor" rows="8" spellcheck="false"></textarea>
+            <input type="text" id="feedback-input" placeholder="If rejecting, explain why...">
+            <div class="action-buttons">
+                <button id="approve-btn" class="btn-success">✓ Approve</button>
+                <button id="reject-btn" class="btn-danger">✕ Reject</button>
+            </div>
+        </aside>
+
+    </div>
+    <script src="app.js?v=3"></script>
+</body>
+</html>
